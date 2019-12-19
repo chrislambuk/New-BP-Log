@@ -1,6 +1,8 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
+	newData();
+	getAvg();
 	// CREATE OBJECTS
 	function Item(nos, sys, dia) {
 		this.nos = nos;
