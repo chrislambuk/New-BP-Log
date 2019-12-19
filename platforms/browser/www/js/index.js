@@ -12,7 +12,7 @@ function onDeviceReady() {
 	function UI() {}
 	// =======================================
 	// CREATE EVENT LISTENERS
-	document.addEventListener('DOMContentLoaded', displayItems());
+	displayItems();
 	document.getElementById('form-list').addEventListener('submit', function(e) {
 		e.preventDefault();
 		const sys = document.getElementById('sys').value;
@@ -22,10 +22,7 @@ function onDeviceReady() {
 		const item = new Item(nos, sys, dia);
 		const ui = new UI();
 		if (sys === '' || dia === '') {
-			ui.showAlert(
-				'NO DATA!',
-				'alert animated bounceInDown z-depth-2'
-			);
+			ui.showAlert('NO DATA!', 'alert animated bounceInDown z-depth-2');
 		} else {
 			const list = document.getElementById('item-list');
 			const row = document.createElement('tr');
