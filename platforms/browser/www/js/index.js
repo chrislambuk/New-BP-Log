@@ -22,7 +22,7 @@ document.getElementById('form-list').addEventListener('submit', function(e) {
 	const item = new Item(nos, sys, dia);
 	const ui = new UI();
 	if (sys === '' || dia === '') {
-		ui.showAlert('NO DATA!', 'alert animated bounceInDown');
+		ui.showAlert('NO DATA!', 'alert animated bounceInDown z-depth-2 red-text');
 	} else {
 		const list = document.getElementById('item-list');
 		const row = document.createElement('tr');
@@ -34,7 +34,7 @@ document.getElementById('form-list').addEventListener('submit', function(e) {
 					`;
 		nos += 1;
 		list.appendChild(row);
-		ui.showAlert('ADDED', 'alert animated bounceInDown');
+		ui.showAlert('ADDED', 'alert animated bounceInDown z-depth-2 green-text');
 		clearInputs();
 		storeItems(item);
 		newData();
@@ -46,7 +46,7 @@ document.getElementById('form-list').addEventListener('submit', function(e) {
 document.getElementById('item-list').addEventListener('click', function(e) {
 	const ui = new UI();
 	deleteBook(e.target);
-	ui.showAlert('DELETED', 'alert animated bounceInDown');
+	ui.showAlert('DELETED', 'alert animated bounceInDown z-depth-2 blue-text');
 	// removeTaskFromLocalStorage();
 	newData();
 	getAvg();
