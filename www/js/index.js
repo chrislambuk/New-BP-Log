@@ -13,8 +13,6 @@ function onDeviceReady() {
 	// =======================================
 	// CREATE EVENT LISTENERS
 	document.addEventListener('DOMContentLoaded', displayItems());
-	document.addEventListener('DOMContentLoaded', newData());
-	document.addEventListener('DOMContentLoaded', getAvg());
 	document.getElementById('form-list').addEventListener('submit', function(e) {
 		e.preventDefault();
 		const sys = document.getElementById('sys').value;
