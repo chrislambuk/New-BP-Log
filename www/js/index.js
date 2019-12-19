@@ -80,10 +80,8 @@ UI.prototype.showAlert = function(message, className) {
 // }
 function deleteBook(e) {
 	if (e.classList.contains('delete')) {
-		if(confirm('Are you sure?')){
 		e.parentElement.parentElement.remove();
 		removeTaskFromLocalStorage(e);
-		}
 	}
 }
 
