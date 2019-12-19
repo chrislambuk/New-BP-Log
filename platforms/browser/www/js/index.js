@@ -1,6 +1,11 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
+	displayItems();
+	newData();
+	getAvg();
+	chart.update();
+
 	// CREATE OBJECTS
 	function Item(nos, sys, dia) {
 		this.nos = nos;
@@ -12,7 +17,8 @@ function onDeviceReady() {
 	function UI() {}
 	// =======================================
 	// CREATE EVENT LISTENERS
-	displayItems();
+
+
 	document.getElementById('form-list').addEventListener('submit', function(e) {
 		e.preventDefault();
 		const sys = document.getElementById('sys').value;
