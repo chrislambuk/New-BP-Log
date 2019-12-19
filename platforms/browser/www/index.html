@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport"
+        content="viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: *" />
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" href="css/animate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"
+        integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+    <title>Blood Pressure Log</title>
+</head>
+
+<body class="white">
+    <main class="container grey-text text-darken-4">
+        <div>
+            <!-- title -->
+            <div id="title">
+                <h6 class="center">Blood Pressure Log</h6>
+            </div>
+            <!-- inputs -->
+            <form id="form-list">
+                <div class="row">
+                    <div class="col s6">
+                        <label for="sys">SYS mmHg</label>
+                        <input class="grey-text text-darken-4" inputmode="numeric" pattern="[0-9]*" type="text" placeholder="Input data..."
+                            id="sys" />
+                    </div>
+                    <div class="col s6">
+                        <label for="dia">DIA mmHg</label>
+                        <input class="grey-text text-darken-4" type="text" inputmode="numeric" pattern="[0-9]*"placeholder="Input data..."
+                            id="dia" />
+                    </div>
+                </div>
+                <div class="center">
+                    <button type="submit" class="btn red waves-effect waves-light">+</button>
+                </div>
+            </form>
+            <!-- chart -->
+            <div class="row">
+
+                <div class="col s12">
+                    <canvas class="center" id="myChart" width="320" height="150"></canvas>
+                </div>
+            </div>
+            <!-- averages -->
+            <div class="row grey-text text-darken-4">
+                <div class="col s6">
+                    <small>Average</small>
+                    <h5>SYS: <span id="total1"></span></h5>
+                </div>
+                <div class="col s6">
+                    <small>Average</small>
+                    <h5>DIA: <span id="total2"></span></h5>
+                </div>
+            </div>
+        </div>
+        <!-- table -->
+        <div class="inputData">
+            <div class="row">
+                <div class="col s12">
+                    <table class="blue-grey lighten-5 black-text">
+                        <thead class="grey-text text-darken-3">
+                            <tr class="blue-grey lighten-4">
+                                <th></th>
+                                <th>SYS <small>[mmHg]</small></th>
+                                <th>DIA <small>[mmHg]</small></th>
+                                <th>Del</th>
+                            </tr>
+                        </thead>
+                        <tbody id="item-list">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Trigger -->
+    <div id='help' class="footer page-footer white black-text waves-effect waves-dark modal-trigger btn-small"
+        href="#modal1">
+        Help
+    </div>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal modal-fixed-footer">
+        <div id="helpModal" class="modal-content">
+            <h4>How To Use.</h4>
+            Enter the SYSTOLIC and DIASTOLIC blood pressure readings from your home monitor. The app will plot the values on the graph and calculate the average values and colour code them for you: <br>
+                <ul>
+                    <li class="green-text">Green = Normal</li>
+                    <li class="orange-text">Orange = Mild</li>
+                    <li class="red-text">Red = Severe</li>
+                </ul>
+            <small>Information based on <a
+                    href="https://www.who.int/cardiovascular_diseases/guidelines/Chart_predictions/en/">WHO/ISH
+                    cardiovascular risk prediction charts</a><br>Please consult your doctor if you have any
+                concerns about your blood pressure readings.</small>
+            <hr>
+            <ul class='center'>
+                <a href="https://arqmedia.co.uk/bp-log/"><small>Info</small></a> |
+                <a href="https://arqmedia.co.uk/privacy-policy/"><small>Privacy
+                        Policy</small></a> |
+                <a href="https://arqmedia.co.uk/tcs/"><small>T&Cs</small></a>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <span href="#!" class="modal-close waves-effect waves-red btn-flat right">Close</span>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <!-- <script src="js/calc.js"></script> -->
+    <!-- <script src="js/chart2.js"></script> -->
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.modal').modal();
+        });
+    </script>
+    <script>
+        function newData() {
+		// get items from storage
+		let items = JSON.parse(localStorage.getItem('items'));
+
+		// convert items to array
+		let dataSYS = Object.keys(items).map(i => items[i].sys);
+		let dataDIA = Object.keys(items).map(i => items[i].dia);
+		// chart.data.datasets[0].data = dataSYS;
+		chart.data.datasets[0].data = dataSYS;
+		// chart.data.datasets[1].data = dataDIA;
+		chart.data.datasets[1].data = dataDIA;
+		chart.update();
+	}
+
+	function getAvg() {
+		// get items from storage
+		let items = JSON.parse(localStorage.getItem('items'));
+
+		// select the DOM elements to put result values in
+		let pSYS = document.getElementById('total1');
+		let pDIA = document.getElementById('total2');
+
+		// convert items to array
+		let dataSYS = Object.keys(items).map(i => items[i].sys);
+		let dataDIA = Object.keys(items).map(i => items[i].dia);
+
+		// get totals of array and calculate average
+		let totalSYS = 0;
+		let totalDIA = 0;
+		for (let i = 0; i < dataSYS.length; i++) {
+			totalSYS += Number(dataSYS[i]);
+			totalDIA += Number(dataDIA[i]);
+		}
+		let avgSYS = Math.floor(totalSYS / dataSYS.length);
+		let avgDIA = Math.floor(totalDIA / dataSYS.length);
+		pSYS.innerText = avgSYS;
+		pDIA.innerText = avgDIA;
+
+		// color the avg values green, orange or red
+		if (avgSYS > 0 && avgSYS <= 140) {
+			pSYS.className = 'green-text';
+		} else if (avgSYS >= 141 && avgSYS <= 189) {
+			pSYS.className = 'orange-text';
+		} else if (avgSYS > 190) {
+			pSYS.className = 'red-text';
+		} else {
+			pSYS.innerText = '';
+			pSYS.className = 'grey-text text-lighten-3';
+		}
+
+		if (avgDIA > 0 && avgDIA <= 90) {
+			pDIA.className = 'green-text';
+		} else if (avgDIA >= 91 && avgDIA <= 109) {
+			pDIA.className = 'orange-text';
+		} else if (avgDIA > 110) {
+			pDIA.className = 'red-text';
+		} else {
+			pDIA.innerText = '';
+			pDIA.className = 'grey-text text-lighten-3';
+		}
+	}
+	// get items from storage
+	let items = JSON.parse(localStorage.getItem('items'));
+
+	// select the DOM elements to put result values in
+	let pSYS = document.getElementById('total1');
+	let pDIA = document.getElementById('total2');
+
+	// convert items to array
+	let dataSYS = Object.keys(items).map(i => items[i].sys);
+	let dataDIA = Object.keys(items).map(i => items[i].dia);
+
+	// get totals of array and calculate average
+	let totalSYS = 0;
+	let totalDIA = 0;
+	for (let i = 0; i < dataSYS.length; i++) {
+		totalSYS += Number(dataSYS[i]);
+		totalDIA += Number(dataDIA[i]);
+	}
+	let avgSYS = Math.floor(totalSYS / dataSYS.length);
+	let avgDIA = Math.floor(totalDIA / dataSYS.length);
+	pSYS.innerText = avgSYS;
+	pDIA.innerText = avgDIA;
+
+	// color the avg values green, orange or red
+	if (avgSYS > 0 && avgSYS <= 140) {
+		pSYS.className = 'green-text';
+	} else if (avgSYS >= 141 && avgSYS <= 189) {
+		pSYS.className = 'orange-text';
+	} else if (avgSYS > 190) {
+		pSYS.className = 'red-text';
+	} else {
+		pSYS.innerText = '';
+		pSYS.className = 'grey-text text-lighten-3';
+	}
+
+	if (avgDIA > 0 && avgDIA <= 90) {
+		pDIA.className = 'green-text';
+	} else if (avgDIA >= 91 && avgDIA <= 109) {
+		pDIA.className = 'orange-text';
+	} else if (avgDIA > 110) {
+		pDIA.className = 'red-text';
+	} else {
+		pDIA.innerText = '';
+		pDIA.className = 'grey-text text-lighten-3';
+    }
+    
+    
+    // chart =================
+	var ctx = document.getElementById('myChart').getContext('2d');
+
+var chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [
+            '1',
+            '2',
+            '3',
+            '4',
+            '5',
+            '6',
+            '7',
+            '8',
+            '9',
+            '10',
+            '11',
+            '12',
+            '13',
+            '14'
+        ],
+        datasets: [
+            {
+                label: 'SYS',
+                data: dataSYS,
+                backgroundColor: [
+                    'RGBA(97, 125, 138, 0.95)',
+                    'RGBA(97, 125, 138, 0.95)',
+                    'RGBA(97, 125, 138, 0.95)',
+                    'RGBA(97, 125, 138, 0.95)',
+                    'RGBA(97, 125, 138, 0.95)',
+                    'RGBA(97, 125, 138, 0.95)',
+                    'RGBA(97, 125, 138, 0.95)',
+                    'RGBA(97, 125, 138, 0.95)',
+                    'RGBA(97, 125, 138, 0.95)',
+                    'RGBA(97, 125, 138, 0.95)',
+                    'RGBA(97, 125, 138, 0.95)',
+                    'RGBA(97, 125, 138, 0.95)',
+                    'RGBA(97, 125, 138, 0.95)',
+                    'RGBA(97, 125, 138, 0.95)'
+                ],
+                borderColor: [
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)'
+                ],
+                borderWidth: 1
+            },
+            {
+                label: 'DIA',
+                data: dataDIA,
+                backgroundColor: [
+                    'RGBA(252, 236, 84, 0.95)',
+                    'RGBA(252, 236, 84, 0.95)',
+                    'RGBA(252, 236, 84, 0.95)',
+                    'RGBA(252, 236, 84, 0.95)',
+                    'RGBA(252, 236, 84, 0.95)',
+                    'RGBA(252, 236, 84, 0.95)',
+                    'RGBA(252, 236, 84, 0.95)',
+                    'RGBA(252, 236, 84, 0.95)',
+                    'RGBA(252, 236, 84, 0.95)',
+                    'RGBA(252, 236, 84, 0.95)',
+                    'RGBA(252, 236, 84, 0.95)',
+                    'RGBA(252, 236, 84, 0.95)',
+                    'RGBA(252, 236, 84, 0.95)',
+                    'RGBA(252, 236, 84, 0.95)'
+                ],
+                borderColor: [
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)',
+                    'rgba(0, 0, 0, 0.3)'
+                ],
+                borderWidth: 1
+            }
+        ]
+    },
+    options: {
+        scales: {
+            yAxes: [
+                {
+                    ticks: {
+                        min: 50,
+                        max: 200,
+                        stepSize: 25
+                    }
+                }
+            ]
+        }
+    }
+});
+    </script>
+</body>
+
+</html>
