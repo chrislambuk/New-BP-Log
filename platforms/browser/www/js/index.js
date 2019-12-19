@@ -24,7 +24,7 @@ function onDeviceReady() {
 		if (sys === '' || dia === '') {
 			ui.showAlert(
 				'NO DATA!',
-				'alert animated bounceInDown z-depth-2 red-text'
+				'alert animated bounceInDown z-depth-2'
 			);
 		} else {
 			const list = document.getElementById('item-list');
@@ -37,7 +37,7 @@ function onDeviceReady() {
 					`;
 			nos += 1;
 			list.appendChild(row);
-			ui.showAlert('ADDED', 'alert animated bounceInDown z-depth-2 green-text');
+			ui.showAlert('ADDED', 'alert animated bounceInDown z-depth-2');
 			clearInputs();
 			storeItems(item);
 			newData();
@@ -49,7 +49,7 @@ function onDeviceReady() {
 	document.getElementById('item-list').addEventListener('click', function(e) {
 		const ui = new UI();
 		deleteBook(e.target);
-		ui.showAlert('DELETED', 'alert animated bounceInDown z-depth-2 blue-text');
+		ui.showAlert('DELETED', 'alert animated bounceInDown z-depth-2');
 		// removeTaskFromLocalStorage();
 		newData();
 		getAvg();
@@ -152,7 +152,7 @@ function onDeviceReady() {
 
 	// Set AdMobAds options:
 	admob.setOptions({
-		publisherId: 'ca-app-pub-3940256099942544/2934735716', // Required
+		publisherId: 'ca-app-pub-8816517022745547/1947432293', // Required
 		// interstitialAdId:     "ca-app-pub-XXXXXXXXXXXXXXXX/IIIIIIIIII",  // Optional
 		tappxIdiOS: 'pub-51294-ios-3317', // Optional
 		tappxShare: 0.5 // Optional
