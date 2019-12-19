@@ -17,8 +17,6 @@ function onDeviceReady() {
 	function UI() {}
 	// =======================================
 	// CREATE EVENT LISTENERS
-
-
 	document.getElementById('form-list').addEventListener('submit', function(e) {
 		e.preventDefault();
 		const sys = document.getElementById('sys').value;
