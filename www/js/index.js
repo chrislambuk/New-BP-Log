@@ -118,7 +118,7 @@ function onDeviceReady() {
 	displayItems();
 	// newData();
 	// getAvg();
-	chart.update();
+	// chart.update();
 
 	// CREATE OBJECTS
 	function Item(nos, sys, dia) {
