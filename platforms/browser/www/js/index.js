@@ -4,8 +4,8 @@ function onDeviceReady() {
 	let items;
 	if (localStorage.getItem('items') === null) {
 					items = [];
-					
-	}
+					localStorage.setItem('items', JSON.stringify(items));
+					}
 			let dataSYS;
 			let dataDIA;
         // chart =================
@@ -334,12 +334,12 @@ function onDeviceReady() {
 	}
 
 	// Set AdMobAds options:
-	// admob.setOptions({
-	// 	publisherId: 'ca-app-pub-8816517022745547/1947432293', // Required
-	// 	// interstitialAdId:     "ca-app-pub-XXXXXXXXXXXXXXXX/IIIIIIIIII",  // Optional
-	// 	tappxIdiOS: 'pub-51294-ios-3317', // Optional
-	// 	tappxShare: 0.5 // Optional
-	// });
+	admob.setOptions({
+		publisherId: 'ca-app-pub-8816517022745547/1947432293', // Required
+		// interstitialAdId:     "ca-app-pub-XXXXXXXXXXXXXXXX/IIIIIIIIII",  // Optional
+		tappxIdiOS: 'pub-51294-ios-3317', // Optional
+		tappxShare: 0.5 // Optional
+	});
 
-	// admob.createBannerView();
+	admob.createBannerView();
 }
