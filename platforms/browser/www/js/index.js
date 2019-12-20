@@ -23,7 +23,7 @@ function onDeviceReady() {
 			// select the DOM elements to put result values in
 			let pSYS = document.getElementById('total1');
 			let pDIA = document.getElementById('total2');
-
+			
 			// convert items to array
 			let dataSYS = Object.keys(items).map(i => items[i].sys);
 			let dataDIA = Object.keys(items).map(i => items[i].dia);
@@ -263,7 +263,6 @@ function onDeviceReady() {
     `;
 			list.appendChild(row);
 		});
-		chart.update()
 	}
 
 	// Set AdMobAds options:
