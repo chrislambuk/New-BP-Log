@@ -63,59 +63,62 @@ function onDeviceReady() {
 					pDIA.className = 'grey-text text-lighten-3';
 			}
 	}
-	// get items from storage
-	let items = JSON.parse(localStorage.getItem('items'));
+	// // get items from storage
+	// let items = JSON.parse(localStorage.getItem('items'));
 
-	// select the DOM elements to put result values in
-	let pSYS = document.getElementById('total1');
-	let pDIA = document.getElementById('total2');
+	// // select the DOM elements to put result values in
+	// let pSYS = document.getElementById('total1');
+	// let pDIA = document.getElementById('total2');
 
-	// convert items to array
-	let dataSYS = Object.keys(items).map(i => items[i].sys);
-	let dataDIA = Object.keys(items).map(i => items[i].dia);
+	// // convert items to array
+	// let dataSYS = Object.keys(items).map(i => items[i].sys);
+	// let dataDIA = Object.keys(items).map(i => items[i].dia);
+	// console.log(dataSYS, dataDIA);
+	
 
-	// get totals of array and calculate average
-	let totalSYS = 0;
-	let totalDIA = 0;
-	for (let i = 0; i < dataSYS.length; i++) {
-			totalSYS += Number(dataSYS[i]);
-			totalDIA += Number(dataDIA[i]);
-	}
-	let avgSYS = Math.floor(totalSYS / dataSYS.length);
-	let avgDIA = Math.floor(totalDIA / dataSYS.length);
-	pSYS.innerText = avgSYS;
-	pDIA.innerText = avgDIA;
+	// // get totals of array and calculate average
+	// let totalSYS = 0;
+	// let totalDIA = 0;
+	// for (let i = 0; i < dataSYS.length; i++) {
+	// 		totalSYS += Number(dataSYS[i]);
+	// 		totalDIA += Number(dataDIA[i]);
+	// }
+	// let avgSYS = Math.floor(totalSYS / dataSYS.length);
+	// let avgDIA = Math.floor(totalDIA / dataSYS.length);
+	// pSYS.innerText = avgSYS;
+	// pDIA.innerText = avgDIA;
 
-	// color the avg values green, orange or red
-	if (avgSYS > 0 && avgSYS <= 140) {
-			pSYS.className = 'green-text';
-	} else if (avgSYS >= 141 && avgSYS <= 189) {
-			pSYS.className = 'orange-text';
-	} else if (avgSYS > 190) {
-			pSYS.className = 'red-text';
-	} else {
-			pSYS.innerText = '';
-			pSYS.className = 'grey-text text-lighten-3';
-	}
+	// // color the avg values green, orange or red
+	// if (avgSYS > 0 && avgSYS <= 140) {
+	// 		pSYS.className = 'green-text';
+	// } else if (avgSYS >= 141 && avgSYS <= 189) {
+	// 		pSYS.className = 'orange-text';
+	// } else if (avgSYS > 190) {
+	// 		pSYS.className = 'red-text';
+	// } else {
+	// 		pSYS.innerText = '';
+	// 		pSYS.className = 'grey-text text-lighten-3';
+	// }
 
-	if (avgDIA > 0 && avgDIA <= 90) {
-			pDIA.className = 'green-text';
-	} else if (avgDIA >= 91 && avgDIA <= 109) {
-			pDIA.className = 'orange-text';
-	} else if (avgDIA > 110) {
-			pDIA.className = 'red-text';
-	} else {
-			pDIA.innerText = '';
-			pDIA.className = 'grey-text text-lighten-3';
-	}
+	// if (avgDIA > 0 && avgDIA <= 90) {
+	// 		pDIA.className = 'green-text';
+	// } else if (avgDIA >= 91 && avgDIA <= 109) {
+	// 		pDIA.className = 'orange-text';
+	// } else if (avgDIA > 110) {
+	// 		pDIA.className = 'red-text';
+	// } else {
+	// 		pDIA.innerText = '';
+	// 		pDIA.className = 'grey-text text-lighten-3';
+	// }
+
 
 
 
 
 	displayItems();
-	newData();
-	getAvg();
-	chart.update();
+	// newData();
+	// getAvg();
+	// chart.update();
 
 	// CREATE OBJECTS
 	function Item(nos, sys, dia) {

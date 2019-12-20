@@ -123,8 +123,10 @@
     <script>
         // chart =================
         var ctx = document.getElementById('myChart').getContext('2d');
-        let dataSYS = [];
-        let dataDIA = [];
+        let dataSYS;
+        let dataDIA;
+        let items;
+
         var chart = new Chart(ctx, {
             type: 'bar',
             data: {
