@@ -118,7 +118,7 @@ function onDeviceReady() {
 	displayItems();
 	// newData();
 	// getAvg();
-	// chart.update();
+	chart.update();
 
 	// CREATE OBJECTS
 	function Item(nos, sys, dia) {
@@ -263,15 +263,16 @@ function onDeviceReady() {
     `;
 			list.appendChild(row);
 		});
+		chart.update()
 	}
 
 	// Set AdMobAds options:
-	admob.setOptions({
-		publisherId: 'ca-app-pub-8816517022745547/1947432293', // Required
-		// interstitialAdId:     "ca-app-pub-XXXXXXXXXXXXXXXX/IIIIIIIIII",  // Optional
-		tappxIdiOS: 'pub-51294-ios-3317', // Optional
-		tappxShare: 0.5 // Optional
-	});
+	// admob.setOptions({
+	// 	publisherId: 'ca-app-pub-8816517022745547/1947432293', // Required
+	// 	// interstitialAdId:     "ca-app-pub-XXXXXXXXXXXXXXXX/IIIIIIIIII",  // Optional
+	// 	tappxIdiOS: 'pub-51294-ios-3317', // Optional
+	// 	tappxShare: 0.5 // Optional
+	// });
 
-	admob.createBannerView();
+	// admob.createBannerView();
 }

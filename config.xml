@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.arqmedia.bplog" version="3.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http:phonegap.com/ns/1.0">
+<widget id="com.arqmedia.bplog" version="3.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http:phonegap.com/ns/1.0">
     <name>BP Log</name>
     <description>
         A blood pressure logger.
@@ -11,7 +11,7 @@
     <preference name="DisallowOverscroll" value="true" />
     <!-- <preference name="android-minSdkVersion" value="14" /> -->
     <preference name="phonegap-version" value="cli-8.0.0" />
-    <gap:plugin name="phonegap-admob" source="npm"/>
+    <!-- <gap:plugin name="phonegap-admob" source="npm"/> -->
     <platform name="ios">
         <edit-config file="*-Info.plist" target="UIStatusBarHidden" mode="merge">
         <true/>

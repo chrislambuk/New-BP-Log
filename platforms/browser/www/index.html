@@ -123,9 +123,13 @@
     <script>
         // chart =================
         var ctx = document.getElementById('myChart').getContext('2d');
+
+        let items;
+		if (localStorage.getItem('items') === null) {
+			items = [];
+		}
         let dataSYS;
         let dataDIA;
-        let items;
 
         var chart = new Chart(ctx, {
             type: 'bar',
