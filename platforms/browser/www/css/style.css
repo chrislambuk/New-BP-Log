@@ -102,9 +102,23 @@ a:hover.delete {
 	background: black !important;
 }
 
-td:nth-child(4) {
-	width: 15%;
+td:nth-child(1) {
+	width: 5% !important;
+	visibility: hidden;
+	padding: 0 !important;
 }
+td:nth-child(2){
+	width: 42% !important;
+	padding: 0 !important;
+}
+td:nth-child(3){
+	width: 42% !important;
+	padding: 0 !important;
+}
+td:nth-child(4) {
+	width: 11%;
+}
+
 th:nth-child(1){
 	width: 5% !important;
 	padding: 0 !important;
@@ -121,11 +135,7 @@ th:nth-child(4){
 	width: 11% !important;
 	padding: 0 !important;
 }
-td:nth-child(1) {
-	width: 5% !important;
-	visibility: hidden;
-	padding: 0 !important;
-}
+
 
 tr{
 	border: none;
