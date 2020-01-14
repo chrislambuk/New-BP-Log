@@ -144,12 +144,12 @@ tr{
 }
 input:focus {
 	border-bottom: 3px solid red !important;
-	box-shadow: 0 2px 0 0 rgba(0,0,0,0.1) !important;
+	box-shadow: 0 2px 0 0 rgba(0,0,0,0) !important;
 }
 input{
-	border-bottom: 3px solid rgba(0,0,0,0) !important;
-	box-shadow: 0 2px 0 0 rgba(0,0,0,0.1) !important;
+	border-bottom: 3px solid rgba(0,0,0,0.2) !important;
 }
+
 #help {
 	width: 100%;
 }
