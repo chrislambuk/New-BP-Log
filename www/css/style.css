@@ -96,6 +96,7 @@ a.delete {
 	padding: 1px 7px;
 	background: whitesmoke !important;
 	border-radius: 3px;
+	margin: 0;
 }
 a:hover.delete {
 	color: white !important;
@@ -116,7 +117,8 @@ td:nth-child(3){
 	padding: 0 !important;
 }
 td:nth-child(4) {
-	width: 11%;
+	width: 10% !important;
+	padding: 0 !important;
 }
 
 th:nth-child(1){
@@ -132,7 +134,7 @@ th:nth-child(3){
 	padding: 0 !important;
 }
 th:nth-child(4){
-	width: 11% !important;
+	width: 10% !important;
 	padding: 0 !important;
 }
 
@@ -142,11 +144,11 @@ tr{
 }
 input:focus {
 	border-bottom: 3px solid red !important;
-	box-shadow: 0 1px 0 0 rgba(0,0,0,0.1) !important;
+	box-shadow: 0 2px 0 0 rgba(0,0,0,0.1) !important;
 }
 input{
 	border-bottom: 3px solid rgba(0,0,0,0) !important;
-	box-shadow: 0 1px 0 0 rgba(0,0,0,0.1) !important;
+	box-shadow: 0 2px 0 0 rgba(0,0,0,0.1) !important;
 }
 #help {
 	width: 100%;
