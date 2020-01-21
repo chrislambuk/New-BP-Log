@@ -12,13 +12,16 @@
     <!-- <preference name="android-minSdkVersion" value="14" /> -->
     <preference name="phonegap-version" value="cli-8.0.0" />
     <gap:plugin name="phonegap-admob" source="npm"/>
-    <platform name="ios">
+    <config-file target="*-Info.plist" parent="GADApplicationIdentifier">
+    <string>ca-app-pub-8816517022745547~2139003987</string>
+</config-file>
         <edit-config file="*-Info.plist" target="UIStatusBarHidden" mode="merge">
         <true/>
         </edit-config>
         <edit-config file="*-Info.plist" target="UIViewControllerBasedStatusBarAppearance" mode="merge">
         <false/>
         </edit-config>
+    <platform name="ios">
             <icon height="1024" platform="ios" src="www/res/icon/ios/icon-1024.png" width="1024" />
             <icon height="114" platform="ios" src="www/res/icon/ios/icon@2x.png" width="114" />
             <icon height="40" platform="ios" src="www/res/icon/ios/icon-40.png" width="40" />
