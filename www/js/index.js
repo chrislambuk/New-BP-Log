@@ -337,7 +337,7 @@ function onDeviceReady() {
 	admob.setOptions({
 		publisherId: 'ca-app-pub-8816517022745547/1947432293', // Required
 		// interstitialAdId:     "ca-app-pub-XXXXXXXXXXXXXXXX/IIIIIIIIII",  // Optional
-		tappxIdiOS: 'pub-51294-ios-3317', // Optional
+		tappxIdiOS: 'pub-51726-ios-1608', // Optional
 		tappxShare: 0.5 // Optional
 	});
 
