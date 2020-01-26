@@ -332,7 +332,7 @@ function onDeviceReady() {
 			list.appendChild(row);
 		});
 	}
-
+getAvg();
 	// Set AdMobAds options:
 	admob.setOptions({
 		publisherId: 'ca-app-pub-8816517022745547/1947432293', // Required
