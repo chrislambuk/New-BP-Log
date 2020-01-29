@@ -185,6 +185,7 @@ function onDeviceReady() {
 
 	displayItems();
 	newData();
+	totItems()
 	// getAvg();
 	// chart.update();
 
@@ -226,6 +227,7 @@ function onDeviceReady() {
 			newData();
 			getAvg();
 		}
+		totItems();
 	});
 
 	// delete list item
@@ -236,6 +238,7 @@ function onDeviceReady() {
 		// removeTaskFromLocalStorage();
 		newData();
 		getAvg();
+		totItems()
 		e.preventDefault();
 	});
 
@@ -332,6 +335,20 @@ function onDeviceReady() {
 			list.appendChild(row);
 		});
 	}
+
+function totItems(){
+	const ui = new UI();
+	let data = JSON.parse(localStorage.getItem('items'));
+	if(data.length == 4){
+		document.getElementById('form-list').style.display = "none";
+		document.getElementById('subTitle').style.display = "block"
+
+	}else{
+		document.getElementById('form-list').style.display = "inline-block";
+		document.getElementById('subTitle').style.display = "none"
+	}
+}
+
 getAvg();
 	// Set AdMobAds options:
 	admob.setOptions({
