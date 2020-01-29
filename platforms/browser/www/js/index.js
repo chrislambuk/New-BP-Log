@@ -339,7 +339,7 @@ function onDeviceReady() {
 function totItems(){
 	const ui = new UI();
 	let data = JSON.parse(localStorage.getItem('items'));
-	if(data.length !== 4){
+	if(data.length !== 14){
 		document.getElementById('form-list').style.display = "inline-block";
 		document.getElementById('subTitle').innerText = "";
 
