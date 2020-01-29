@@ -339,15 +339,22 @@ function onDeviceReady() {
 function totItems(){
 	const ui = new UI();
 	let data = JSON.parse(localStorage.getItem('items'));
-	if(data.length == 4){
-		document.getElementById('form-list').style.display = "none";
-		document.getElementById('subTitle').style.display = "block"
+	if(data.length !== 4){
+		document.getElementById('form-list').style.display = "inline-block";
+		document.getElementById('subTitle').innerText = "";
 
 	}else{
-		document.getElementById('form-list').style.display = "inline-block";
-		document.getElementById('subTitle').style.display = "none"
+		document.getElementById('form-list').style.display = "none";
+		document.getElementById('subTitle').innerText = "FULL";
 	}
 }
+
+document.getElementById('clrBtn').addEventListener('click', function(){
+	localStorage.clear();
+	location.reload();
+return false;
+})
+
 
 getAvg();
 	// Set AdMobAds options:
