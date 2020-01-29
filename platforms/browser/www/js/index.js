@@ -345,7 +345,7 @@ function totItems(){
 
 	}else{
 		document.getElementById('form-list').style.display = "none";
-		document.getElementById('subTitle').innerText = "FULL";
+		document.getElementById('subTitle').innerText = "DATA FULL";
 	}
 }
 
