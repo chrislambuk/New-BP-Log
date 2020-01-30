@@ -340,12 +340,17 @@ function totItems(){
 	const ui = new UI();
 	let data = JSON.parse(localStorage.getItem('items'));
 	if(data.length !== 14){
-		document.getElementById('form-list').style.display = "inline-block";
-		document.getElementById('subTitle').innerText = "";
-
+		document.getElementById('sys').disabled=false;
+		document.getElementById('sys').placeholder="input";
+		document.getElementById('dia').disabled=false;
+		document.getElementById('dia').placeholder="input";
+		// document.getElementById('subTitle').display.color = "white";
 	}else{
-		document.getElementById('form-list').style.display = "none";
-		document.getElementById('subTitle').innerText = "DATA FULL";
+		document.getElementById('sys').disabled=true;
+		document.getElementById('sys').placeholder="DATA FULL!";
+		document.getElementById('dia').disabled=true;
+		document.getElementById('dia').placeholder="DATA FULL!";
+		// document.getElementById('subTitle').display.color = "red";
 	}
 }
 
