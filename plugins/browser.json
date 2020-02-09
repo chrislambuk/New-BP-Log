@@ -60,11 +60,19 @@
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.arqmedia.com"
+        },
+        "cordova-plugin-admobpro": {
+            "ADMOB_APP_ID": "ca-app-pub-8816517022745547~6489900233",
+            "PLAY_SERVICES_VERSION": "16.0.0",
+            "PACKAGE_NAME": "com.arqmedia.bplog"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.arqmedia.com"
+        },
+        "cordova-plugin-extension": {
+            "PACKAGE_NAME": "com.arqmedia.bplog"
         }
     }
 }
