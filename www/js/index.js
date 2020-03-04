@@ -232,9 +232,9 @@ function onDeviceReady() {
 
 	// delete list item
 	document.getElementById('item-list').addEventListener('click', function(e) {
-		const ui = new UI();
+		// const ui = new UI();
 		deleteBook(e.target);
-		ui.showAlert('DELETED', 'alert animated bounceInDown z-depth-2');
+		// ui.showAlert('DELETED', 'alert animated bounceInDown z-depth-2');
 		// removeTaskFromLocalStorage();
 		newData();
 		getAvg();
@@ -271,6 +271,8 @@ function onDeviceReady() {
 		if (e.classList.contains('delete')) {
 			e.parentElement.parentElement.remove();
 			removeTaskFromLocalStorage(e);
+			const ui = new UI();
+			ui.showAlert('DELETED', 'alert animated bounceInDown z-depth-2');
 		}
 	}
 
