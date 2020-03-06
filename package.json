@@ -1,0 +1,21 @@
+{
+  "devDependencies": {},
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-admobpro": {
+        "ADMOB_APP_ID": "ca-app-pub-8816517022745547~2139003987",
+        "PLAY_SERVICES_VERSION": "16.0.0"
+      },
+      "cordova-plugin-wkwebview-engine": {}
+    },
+    "platforms": [
+      "ios"
+    ]
+  },
+  "dependencies": {
+    "cordova-admobsdk": "^7.49.0",
+    "cordova-ios": "^5.1.1",
+    "cordova-plugin-admobpro": "2.49.0",
+    "cordova-plugin-wkwebview-engine": "^1.2.1"
+  }
+}

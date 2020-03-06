@@ -19,6 +19,37 @@
 </head>
 
 <body class="white">
+    <script>
+        var admobid = {};
+        if( /(android)/i.test(navigator.userAgent) ) { 
+            admobid = { // for Android
+                banner: 'ca-app-pub-6869992474017983/9375997553',
+                interstitial: 'ca-app-pub-6869992474017983/1657046752'
+            };
+        } else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
+            admobid = { // for iOS
+                banner: 'ca-app-pub-8816517022745547/1947432293',
+                interstitial: 'ca-app-pub-6869992474017983/7563979554'
+            };
+        } else {
+            admobid = { // for Windows Phone
+                banner: 'ca-app-pub-6869992474017983/8878394753',
+                interstitial: 'ca-app-pub-6869992474017983/1355127956'
+            };
+        }
+        
+        function initApp() {
+            if (AdMob) {
+                AdMob.createBanner({
+                    adId : admobid.banner,
+                    position : AdMob.AD_POSITION.BOTTOM_CENTER,
+                    autoShow : true
+                });
+            }
+        }
+        
+        document.addEventListener('deviceready', initApp, false);
+        </script>
     <main class="container grey-text text-darken-4">
         <div>
             <!-- title -->
@@ -88,8 +119,7 @@
     <div id="modal1" class="modal modal-fixed-footer">
         <div id="helpModal" class="modal-content">
             <h4>How To Use.</h4>
-            Enter up to 14 SYSTOLIC and DIASTOLIC blood pressure readings from your home monitor. The app will plot the
-            values on the graph and calculate the average values and colour code them for you: <br>
+            Enter up to 14 SYS and DIA blood pressure readings from your home monitor. Each reading can be deleted or the app can be reset. The colour codes are:<br>
             <ul>
                 <li class="green-text">Green = Normal</li>
                 <li class="orange-text">Orange = Mild</li>
@@ -97,9 +127,8 @@
             </ul>
             <small>Information based on <a
                     href="https://www.who.int/cardiovascular_diseases/guidelines/Chart_predictions/en/">WHO/ISH
-                    cardiovascular risk prediction charts</a><br>Please consult your doctor if you have any
+                    cardiovascular risk prediction charts</a><br>Consult your doctor if you have any
                 concerns about your blood pressure readings.</small>
-                <small>When all 14 inputs are used either delete each line or reset the app.</small>
             <hr>
             <ul class='center'>
                 <a href="https://arqmedia.co.uk/bp-log.html"><small>Info</small></a> |

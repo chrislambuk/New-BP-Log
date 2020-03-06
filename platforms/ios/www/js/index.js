@@ -110,7 +110,7 @@ function onDeviceReady() {
                 scales: {
                     yAxes: [{
                         ticks: {
-                            min: 50,
+                            min: 25,
                             max: 200,
                             stepSize: 25
                         }
@@ -363,14 +363,4 @@ return false;
 })
 
 
-getAvg();
-	// Set AdMobAds options:
-	admob.setOptions({
-		publisherId: 'ca-app-pub-8816517022745547/1947432293', // Required
-		// interstitialAdId:     "ca-app-pub-XXXXXXXXXXXXXXXX/IIIIIIIIII",  // Optional
-		// tappxIdiOS: 'pub-51726-ios-1608', // Optional
-		// tappxShare: 0.5 // Optional
-	});
-
-	admob.createBannerView();
 }
