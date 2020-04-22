@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.arqmedia.co.uk" version="3.6.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http:phonegap.com/ns/1.0">
+    <name>BP Log</name>
+    <description>
+        A blood pressure logger.
+    </description>
+    <author email="info@arqmedia.co.uk" href="http://arqmedia.co.uk">
+        Chris Lamb
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="phonegap-version" value="cli-9.0.0" />
+</widget>

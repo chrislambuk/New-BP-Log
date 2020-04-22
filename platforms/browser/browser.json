@@ -1,0 +1,42 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-admobsdk": {
+            "PACKAGE_NAME": "com.arqmedia.co.uk"
+        },
+        "cordova-plugin-extension": {
+            "PACKAGE_NAME": "com.arqmedia.co.uk"
+        },
+        "cordova-plugin-admobpro": {
+            "ADMOB_APP_ID": "ca-app-pub-8816517022745547~2139003987",
+            "PLAY_SERVICES_VERSION": "16.0.0",
+            "PACKAGE_NAME": "com.arqmedia.co.uk"
+        },
+        "cordova-plugin-wkwebview-engine": {
+            "PACKAGE_NAME": "com.arqmedia.co.uk"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/cordova-plugin-admobpro/www/AdMob.js",
+            "id": "cordova-plugin-admobpro.AdMob",
+            "pluginId": "cordova-plugin-admobpro",
+            "clobbers": [
+                "window.AdMob"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-admobsdk": "7.49.0",
+        "cordova-plugin-extension": "1.5.4",
+        "cordova-plugin-admobpro": "2.49.0",
+        "cordova-plugin-wkwebview-engine": "1.2.1"
+    }
+}
